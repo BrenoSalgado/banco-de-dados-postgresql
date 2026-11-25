@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  sql:
+    name: Executa scripts e testes (PostgreSQL ${{ matrix.postgres }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        postgres: ["16", "18"]
+    services:
+      postgres:
+        image: postgres:${{ matrix.postgres }}
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PGHOST: localhost
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: postgres
+    steps:
+      - uses: actions/checkout@v5
+      - name: Executa todos os scripts (para no primeiro erro)
+        run: psql -v ON_ERROR_STOP=1 -f executar_tudo.sql
+      - name: Roda de novo (scripts precisam ser reexecutáveis)
+        run: psql -v ON_ERROR_STOP=1 -q -f executar_tudo.sql > /dev/null

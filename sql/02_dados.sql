@@ -1,0 +1,243 @@
+-- =============================================================================
+-- 02_dados.sql — Dados de exemplo (fictícios)
+--
+-- Histórico de 2025/1 e 2025/2 com notas lançadas; 2026/1 em andamento (CURSANDO).
+-- As matrículas respeitam os pré-requisitos de cada disciplina.
+-- =============================================================================
+
+SET search_path TO academico;
+
+INSERT INTO departamento (id, sigla, nome) VALUES
+    (1, 'DCOMP', 'Departamento de Computação'),
+    (2, 'DMAT', 'Departamento de Matemática'),
+    (3, 'DEST', 'Departamento de Estatística'),
+    (4, 'DFIS', 'Departamento de Física');
+
+INSERT INTO pessoa (id, nome, email, data_nascimento) VALUES
+    (1, 'Ana Ribeiro', 'ana.ribeiro@universidade.edu.br', '1980-03-14'),
+    (2, 'Carlos Menezes', 'carlos.menezes@universidade.edu.br', '1985-07-22'),
+    (3, 'Fernanda Lopes', 'fernanda.lopes@universidade.edu.br', '1983-11-05'),
+    (4, 'Ricardo Alves', 'ricardo.alves@universidade.edu.br', '1976-01-30'),
+    (5, 'Juliana Castro', 'juliana.castro@universidade.edu.br', '1979-09-18'),
+    (6, 'Marcos Teixeira', 'marcos.teixeira@universidade.edu.br', '1988-04-02'),
+    (7, 'Patrícia Gomes', 'patricia.gomes@universidade.edu.br', '1982-12-11'),
+    (8, 'Eduardo Nunes', 'eduardo.nunes@universidade.edu.br', '1975-06-25'),
+    (9, 'Lucas Pereira', 'lucas.pereira@universidade.edu.br', '2006-01-01'),
+    (10, 'Mariana Souza', 'mariana.souza@universidade.edu.br', '2005-06-08'),
+    (11, 'Gabriel Oliveira', 'gabriel.oliveira@universidade.edu.br', '2004-11-15'),
+    (12, 'Beatriz Santos', 'beatriz.santos@universidade.edu.br', '2003-04-22'),
+    (13, 'Rafael Lima', 'rafael.lima@universidade.edu.br', '2006-09-02'),
+    (14, 'Camila Rocha', 'camila.rocha@universidade.edu.br', '2005-02-09'),
+    (15, 'Thiago Martins', 'thiago.martins@universidade.edu.br', '2004-07-16'),
+    (16, 'Larissa Barbosa', 'larissa.barbosa@universidade.edu.br', '2003-12-23'),
+    (17, 'Pedro Henrique Dias', 'pedro.dias@universidade.edu.br', '2006-05-03'),
+    (18, 'Isabela Cardoso', 'isabela.cardoso@universidade.edu.br', '2005-10-10'),
+    (19, 'Felipe Araújo', 'felipe.araujo@universidade.edu.br', '2004-03-17'),
+    (20, 'Letícia Moreira', 'leticia.moreira@universidade.edu.br', '2003-08-24'),
+    (21, 'Gustavo Freitas', 'gustavo.freitas@universidade.edu.br', '2006-01-04'),
+    (22, 'Amanda Correia', 'amanda.correia@universidade.edu.br', '2005-06-11'),
+    (23, 'Bruno Carvalho', 'bruno.carvalho@universidade.edu.br', '2004-11-18'),
+    (24, 'Júlia Mendes', 'julia.mendes@universidade.edu.br', '2003-04-25'),
+    (25, 'Vinícius Ramos', 'vinicius.ramos@universidade.edu.br', '2006-09-05'),
+    (26, 'Natália Pinto', 'natalia.pinto@universidade.edu.br', '2005-02-12'),
+    (27, 'Diego Fernandes', 'diego.fernandes@universidade.edu.br', '2004-07-19'),
+    (28, 'Sofia Azevedo', 'sofia.azevedo@universidade.edu.br', '2003-12-26');
+
+INSERT INTO professor (pessoa_id, siape, departamento_id, titulacao, salario, data_admissao) VALUES
+    (1, '1123401', 1, 'Doutor', 14500.00, '2012-02-01'),
+    (2, '1123402', 1, 'Mestre', 9800.00, '2016-08-01'),
+    (3, '1123403', 1, 'Doutor', 13900.00, '2014-03-01'),
+    (4, '1123404', 1, 'Doutor', 15200.00, '2008-08-01'),
+    (5, '1123405', 2, 'Doutor', 14100.00, '2010-02-01'),
+    (6, '1123406', 2, 'Mestre', 9500.00, '2019-08-01'),
+    (7, '1123407', 3, 'Doutor', 13700.00, '2013-03-01'),
+    (8, '1123408', 4, 'Doutor', 12000.00, '2007-02-01');
+
+INSERT INTO curso (id, codigo, nome, departamento_id, coordenador_id) VALUES
+    (1, 'BCC', 'Ciência da Computação', 1, 1),
+    (2, 'BSI', 'Sistemas de Informação', 1, 3),
+    (3, 'MAT', 'Matemática', 2, 5),
+    (4, 'EST', 'Estatística', 3, 7);
+
+INSERT INTO aluno (pessoa_id, matricula, curso_id, ano_ingresso) VALUES
+    (9, '240100001', 1, 2024),
+    (10, '250100002', 1, 2025),
+    (11, '250100003', 1, 2025),
+    (12, '250100004', 1, 2025),
+    (13, '250100005', 1, 2025),
+    (14, '240100006', 1, 2024),
+    (15, '250100007', 1, 2025),
+    (16, '250100008', 1, 2025),
+    (17, '250200009', 2, 2025),
+    (18, '250200010', 2, 2025),
+    (19, '240200011', 2, 2024),
+    (20, '250200012', 2, 2025),
+    (21, '250200013', 2, 2025),
+    (22, '250300014', 3, 2025),
+    (23, '250300015', 3, 2025),
+    (24, '240300016', 3, 2024),
+    (25, '250300017', 3, 2025),
+    (26, '250400018', 4, 2025),
+    (27, '250400019', 4, 2025),
+    (28, '250400020', 4, 2025);
+
+INSERT INTO disciplina (id, codigo, nome, carga_horaria, departamento_id) VALUES
+    (1, 'COMP101', 'Algoritmos e Programação I', 90, 1),
+    (2, 'COMP102', 'Algoritmos e Programação II', 90, 1),
+    (3, 'COMP201', 'Estruturas de Dados', 90, 1),
+    (4, 'COMP202', 'Banco de Dados', 60, 1),
+    (5, 'COMP203', 'Programação Orientada a Objetos', 60, 1),
+    (6, 'COMP301', 'Engenharia de Software', 60, 1),
+    (7, 'COMP302', 'Princípios e Padrões de Projeto', 60, 1),
+    (8, 'MAT101', 'Cálculo I', 90, 2),
+    (9, 'MAT102', 'Geometria Analítica', 60, 2),
+    (10, 'MAT103', 'Matemática Discreta', 60, 2),
+    (11, 'EST101', 'Probabilidade e Estatística', 60, 3),
+    (12, 'COMP401', 'Inteligência Artificial', 60, 1);
+
+-- (disciplina, requisito)
+INSERT INTO pre_requisito (disciplina_id, requisito_id) VALUES
+    (2, 1),
+    (3, 2),
+    (3, 10),
+    (4, 2),
+    (5, 1),
+    (6, 5),
+    (7, 5),
+    (11, 8),
+    (12, 3),
+    (12, 11);
+
+INSERT INTO turma (id, disciplina_id, professor_id, ano, semestre, vagas) VALUES
+    (1, 1, 2, 2025, 1, 40),
+    (2, 8, 5, 2025, 1, 50),
+    (3, 10, 6, 2025, 1, 40),
+    (4, 9, 6, 2025, 1, 40),
+    (5, 2, 1, 2025, 2, 40),
+    (6, 11, 7, 2025, 2, 40),
+    (7, 5, 3, 2025, 2, 35),
+    (8, 3, 1, 2026, 1, 40),
+    (9, 4, 4, 2026, 1, 4),
+    (10, 7, 3, 2026, 1, 30),
+    (11, 12, 4, 2026, 1, 30);
+
+-- nota/frequência NULL = disciplina em andamento (situação CURSANDO)
+INSERT INTO matricula (aluno_id, turma_id, nota, frequencia) VALUES
+    (9, 1, 8.6, 90),
+    (9, 2, 8.1, 85),
+    (9, 3, 8.3, 75),
+    (10, 1, 6.4, 75),
+    (10, 2, 9.9, 75),
+    (10, 3, 8.4, 95),
+    (11, 1, 9.1, 80),
+    (11, 2, 6.1, 80),
+    (11, 3, 9.8, 100),
+    (12, 1, 7.8, 95),
+    (12, 2, 8.4, 95),
+    (12, 3, 6.4, 70),
+    (13, 1, 5.0, 80),
+    (13, 2, 4.1, 80),
+    (13, 3, 9.8, 80),
+    (14, 1, 7.3, 90),
+    (14, 2, 9.2, 90),
+    (14, 3, 9.0, 95),
+    (15, 1, 9.6, 75),
+    (15, 2, 9.4, 80),
+    (15, 3, 8.2, 95),
+    (16, 1, 9.4, 85),
+    (16, 2, 6.3, 80),
+    (16, 3, 7.1, 85),
+    (17, 1, 9.6, 75),
+    (17, 3, 8.9, 95),
+    (17, 4, 8.4, 95),
+    (18, 1, 8.0, 90),
+    (18, 3, 8.1, 85),
+    (18, 4, 8.0, 95),
+    (19, 1, 6.1, 80),
+    (19, 3, 6.4, 65),
+    (19, 4, 9.8, 80),
+    (20, 1, 6.0, 95),
+    (20, 3, 9.7, 80),
+    (20, 4, 7.0, 85),
+    (21, 1, 9.6, 80),
+    (21, 3, 7.3, 85),
+    (21, 4, 5.7, 70),
+    (22, 2, 7.8, 80),
+    (22, 3, 3.7, 70),
+    (22, 4, 7.3, 100),
+    (23, 2, 8.7, 95),
+    (23, 3, 6.0, 85),
+    (23, 4, 9.6, 85),
+    (24, 2, 7.9, 85),
+    (24, 3, 10.0, 80),
+    (24, 4, 8.0, 95),
+    (25, 2, 8.5, 85),
+    (25, 3, 9.1, 80),
+    (25, 4, 9.6, 80),
+    (26, 2, 6.5, 80),
+    (26, 4, 8.0, 80),
+    (27, 2, 8.5, 75),
+    (27, 4, 7.1, 70),
+    (28, 2, 5.1, 60),
+    (28, 4, 8.4, 85),
+    (9, 5, 6.9, 85),
+    (9, 6, 6.8, 75),
+    (9, 7, 8.2, 90),
+    (10, 5, 7.1, 85),
+    (10, 6, 6.8, 85),
+    (10, 7, 9.6, 100),
+    (11, 5, 1.6, 90),
+    (11, 6, 8.8, 100),
+    (11, 7, 9.3, 90),
+    (12, 5, 7.4, 75),
+    (12, 6, 9.5, 85),
+    (12, 7, 1.9, 90),
+    (14, 5, 7.5, 75),
+    (14, 6, 7.3, 85),
+    (14, 7, 8.1, 80),
+    (15, 5, 7.8, 85),
+    (15, 6, 2.6, 60),
+    (15, 7, 6.0, 95),
+    (16, 5, 7.2, 85),
+    (16, 6, 4.4, 80),
+    (16, 7, 7.7, 80),
+    (17, 5, 7.5, 95),
+    (17, 7, 7.4, 80),
+    (18, 5, 6.6, 80),
+    (18, 7, 8.6, 90),
+    (19, 5, 6.7, 80),
+    (19, 7, 10.0, 90),
+    (20, 5, 7.1, 75),
+    (20, 7, 9.3, 80),
+    (21, 5, 5.1, 70),
+    (21, 7, 8.5, 80),
+    (26, 6, 7.5, 50),
+    (27, 6, 8.0, 90),
+    (9, 8, NULL, NULL),
+    (9, 9, NULL, NULL),
+    (9, 10, NULL, NULL),
+    (10, 8, NULL, NULL),
+    (10, 9, NULL, NULL),
+    (10, 10, NULL, NULL),
+    (11, 10, NULL, NULL),
+    (12, 9, NULL, NULL),
+    (14, 8, NULL, NULL),
+    (14, 9, NULL, NULL),
+    (14, 10, NULL, NULL),
+    (15, 8, NULL, NULL),
+    (15, 10, NULL, NULL),
+    (16, 8, NULL, NULL),
+    (16, 10, NULL, NULL),
+    (17, 8, NULL, NULL),
+    (18, 8, NULL, NULL),
+    (20, 8, NULL, NULL);
+
+-- Ajusta as sequências das colunas identity depois dos INSERTs com id explícito
+DO $$
+BEGIN
+    PERFORM setval(pg_get_serial_sequence('academico.departamento', 'id'), (SELECT max(id) FROM academico.departamento));
+    PERFORM setval(pg_get_serial_sequence('academico.pessoa', 'id'), (SELECT max(id) FROM academico.pessoa));
+    PERFORM setval(pg_get_serial_sequence('academico.curso', 'id'), (SELECT max(id) FROM academico.curso));
+    PERFORM setval(pg_get_serial_sequence('academico.disciplina', 'id'), (SELECT max(id) FROM academico.disciplina));
+    PERFORM setval(pg_get_serial_sequence('academico.turma', 'id'), (SELECT max(id) FROM academico.turma));
+END $$;
